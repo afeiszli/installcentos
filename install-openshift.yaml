@@ -1,0 +1,10 @@
+---
+- hosts: centos
+  tasks:
+    - name: Install OpenShift
+      shell: curl https://raw.githubusercontent.com/okd-community-install/installcentos/master/install-openshift.sh | INTERACTIVE=false /bin/bash >> install.log
+      environment:
+        DOMAIN: {{ public_ip }}.nip.io
+        USERNAME: user1
+        PASSWORD: password
+      become: yes
